@@ -1,0 +1,83 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(-45deg, #246e5d, #634e56, #2e5c6d, #c4c3c3);
+  background-size: 400% 400%;
+  animation: gradient 9s ease-in-out infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.calculator-grid {
+  display: grid;
+  justify-content: center;
+  margin-top: 2rem;
+  grid-template-columns: repeat(4, 6rem);
+  grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.calculator-grid > button:hover,
+.calculator-grid > button:focus {
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: ease-out 0.5s;
+  transform: scale(0.999);
+  outline: none;
+}
+
+.output:hover {
+  cursor: text;
+}
+
+.output {
+  border-radius: 0.1rem;
+  grid-column: 1/-1;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 0.75rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.output .previous-operand {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.5rem;
+  animation: bounceIn 2s infinite;
+}
+
+.output .current-operand {
+  color: white;
+  font-size: 2.5rem;
+  animation: bounceIn 2s infinite;
+}
