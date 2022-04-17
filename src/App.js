@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import './App.css';
 import DigitsButton from './DigitsButton';
 import OperationsButton from './OperationsButton';
@@ -144,6 +144,19 @@ const evaluate = ({ currentOperand, previousOperand, operation }) => {
 
 function App() {
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(reducer, {})
+
+  const keyPressFunc = (e) => {
+    console.log(e.key)
+    let digit = e.key;
+    dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit } })
+  }
+
+  useEffect(() => {
+    document.addEventListener("keypress", keyPressFunc)
+    return () => {
+      document.removeEventListener('keypress', keyPressFunc)
+    }
+  },)
 
   return (
     <div className='wrapper'>
